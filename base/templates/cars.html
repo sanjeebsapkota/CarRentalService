@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cars Details</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <div class="card-container">  <!-- Add this container -->
+        <div class="card">
+            <img src="{% get_media_prefix %}images/marutialto.png" alt="Maruti Alto" style="width:100%">
+            <h1>Maruti Alto</h1>
+            <p class="price">$19.99</p>
+            <p>The Maruti Alto has 1 Petrol Engine and 1 CNG Engine on offer. The Petrol engine is 796 cc</p>
+            <p><button>Add to Cart</button></p>
+        </div>
+
+        <div class="card">
+            <img src="{% get_media_prefix %}images/ignis.png" alt="IGNIS Suzuki" style="width:100%">
+            <h1>IGNIS Suzuki</h1>
+            <p class="price">$29.99</p>
+            <p>The Japanese Ultra Compact SUV, even more Distinctive and Tough. Bold distinctive styling, combined with urban functionality.</p>
+            <p><button>Add to Cart</button></p>
+        </div>
+
+        <div class="card">
+            <img src="{% get_media_prefix %}images/ferrari.png" alt="Ferrari" style="width:100%">
+            <h1>Ferrari</h1>
+            <p class="price">$235.99</p>
+            <p>The ultimate sports car with unparalleled performance and luxury.</p>
+            <p><button>Add to Cart</button></p>
+        </div>
+        <div class="card">
+            <img src="{% get_media_prefix %}images/breeza.png" alt="Ferrari" style="width:100%">
+            <h1>Breeza</h1>
+            <p class="price">$45.99</p>
+            <p>The bolder brezza dazzles you with its Powerful Road presence, which is hard to ignore even on the busiest roads. 
+                Equipped with Smart features and technologies that elevate your daily drive while the SUV prowess helps you enjoy a quick gateway, with ease.</p>
+            <p><button>Add to Cart</button></p>
+        </div>
+
+    </div> <!-- Close the container here -->
+</body>
+</html>

@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title %}Invoice{% endblock %}
+
+{% block content %}
+<body class="invoice">
+    <h1 class="invoiceh1">Invoice</h1>
+    <table class="invoice-table">
+        <tr>
+            <th>Invoice Number:</th>
+            <td>{{ invoice_number }}</td>
+        </tr>
+        <tr>
+            <th>Customer:</th>
+            <td>{{ customer.username }}</td>
+        </tr>
+        <tr>
+            <th>Car:</th>
+            <td>{{ car.make }} {{ car.model }} ({{ car.year }})</td>
+        </tr>
+        <tr>
+            <th>Rental Period:</th>
+            <td>{{ start_date }} to {{ end_date }}</td>
+        </tr>
+        <tr>
+            <th>Rental Days:</th>
+            <td>{{ rental_days }}</td>
+        </tr>
+        <tr class="total-price">
+            <th>Total Price:</th>
+            <td>NPR {{ total_price }}</td>
+        </tr>
+        <tr>
+            <th>Issue Date:</th>
+            <td>{{ issue_date }}</td>
+        </tr>
+    </table>
+    <div>
+        <button class="Print" onclick="window.print()">Print</button>
+    </div>
+{% endblock %}

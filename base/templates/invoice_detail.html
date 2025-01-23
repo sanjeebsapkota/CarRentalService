@@ -1,0 +1,10 @@
+<h1>Invoice Details</h1>
+<p>Invoice Number: INV-{{ invoice.rental.id|default:"N/A"|stringformat:"06" }}</p>
+<p>Car: {{ invoice.booking.car }}</p>
+<p>Rental Period: {{ invoice.booking.start_date }} to {{ invoice.booking.end_date }}</p>
+<p>Total Price: {{ invoice.total_price }}</p>
+<p>Issue Date: {{ invoice.created_at }}</p>
+<div>
+    <button onclick="window.print()">Print</button>
+   
+</div>

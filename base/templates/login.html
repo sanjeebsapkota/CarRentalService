@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}Login - Car Rental Service{% endblock %}
+
+{% block content %}
+    <div class="login-container">
+        <h2>Login</h2>
+        
+        <!-- Displaying messages -->
+        {% if messages %}
+            <ul>
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        
+        <form method="POST">
+            {% csrf_token %}
+            <div class="input-field">
+                <input type="text" id="username" name="username" placeholder="Username" required>
+            </div>
+            <div class="input-field">
+                <input type="password" id="password" name="password" placeholder="Password" required>
+            </div>
+            <button type="submit" class="login-btn">Login</button>
+        </form>
+
+        <p class="register-link">Don't have an account? <a href="{% url 'register' %}">Register here</a>.</p>
+    </div>
+{% endblock %}

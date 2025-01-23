@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block title %}Cars Availability{% endblock %}
+
+{% block content %}
+    <div class="carcontainerfull">
+        <!-- Title at the top-right corner -->
+        <div class="available-cars-title">Available Cars</div>
+
+        <!-- Search Form -->
+        <form method="GET" action="" class="search-form mb-4">
+            <div class="row">
+                <div class="col-md-4">
+                    <input type="text" name="query" placeholder="Search by name" value="{{ query }}" class="form-control">
+                </div>
+                <div class="col-md-4">
+                    <input type="number" name="max_price" placeholder="Max Price" value="{{ max_price }}" class="form-control">
+                </div>
+                <div class="col-md-4">
+                    <button type="submit" class="btn btn-primary w-100">Search</button>
+                </div>
+            </div>
+        </form>
+
+        <!-- Car Cards -->
+        <div class="carcard-container row">
+            {% for car in page_obj %}
+                <div class="col-md-4 mb-4">
+                    <div class="carcard card">
+                        <!-- Car Image -->
+                        {% if car.image %}
+                            <img src="{{ car.image.url }}" alt="{{ car.make }} {{ car.model }}" class="car-image card-img-top">
+                        {% else %}
+                            <img src="/media/car_images/default.png" alt="Default Image" class="car-image card-img-top">
+                        {% endif %}
+
+                        <!-- Car Details -->
+                        <div class="card-body">
+                            <h5 class="card-title car-name">{{ car.make }} {{ car.model }}</h5>
+                            <p class="card-text">NPR {{ car.rental_price_per_day }} per day</p>
+                            <p class="card-text">
+                                {{ car.make }} {{ car.model }} ({{ car.year }}) is available for rent at NPR {{ car.rental_price_per_day }} per day.
+                                {% if car.availability_status %}
+                                    <strong class="text-success">Available now!</strong>
+                                {% else %}
+                                    <strong class="text-danger">Currently unavailable.</strong>
+                                {% endif %}
+                            </p>
+
+                            <!-- Book Car Button -->
+                            {% if car.availability_status %}
+                                <form action="{% url 'book_car' car.id %}" method="POST">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-success w-100">Book Car</button>
+                                </form>
+                            {% else %}
+                                <button class="btn btn-secondary w-100" disabled>Unavailable</button>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        <!-- Pagination Controls -->
+        <div class="pagination text-center my-4">
+            <span class="step-links">
+                {% if page_obj.has_previous %}
+                    <a href="?page=1">&laquo; First</a>
+                    <a href="?page={{ page_obj.previous_page_number }}">Previous</a>
+                {% endif %}
+
+                <span class="current">
+                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+                </span>
+
+                {% if page_obj.has_next %}
+                    <a href="?page={{ page_obj.next_page_number }}">Next</a>
+                    <a href="?page={{ page_obj.paginator.num_pages }}">Last &raquo;</a>
+                {% endif %}
+            </span>
+        </div>
+    </div>
+{% endblock %}

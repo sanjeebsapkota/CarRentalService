@@ -1,0 +1,914 @@
+/* NAVBAR STYLE */
+nav-item {
+    margin: 20px;
+    display: flex;
+    margin-right: 20px;
+}
+
+.container-fluid {
+    background-color: rgb(170, 226, 208);
+    color: whitesmoke;
+}
+
+.navbar-brand {
+    color: white;
+}
+
+.navbar a {
+    color: black; /* Change font color to black */
+    font-size: 25px;
+    font-weight: bold;
+    margin: 0 15px; /* Add horizontal space between items */
+}
+
+.navbar a:hover {
+    color: rgba(144, 47, 209, 0.904);
+}
+
+/* Optional: Add gap if parent is flex */
+.navbar {
+    display: flex; /* Ensure it's a flex container */
+    gap: 20px; /* Add space between items */
+}
+
+
+/* NAVBAR STYLE ENDED HERE*/
+
+/*FOOTER DESIGN STARTED*/
+.footer {
+    background-color: #111;
+    color: #fff;
+    padding: 40px 20px;
+    font-family: Arial, sans-serif;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 220px;
+    margin: 20px;
+}
+
+.footer-section h3 {
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+.footer-section p, .footer-section ul {
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 10px;
+}
+
+.footer-section ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.footer-section ul li a:hover {
+    text-decoration: underline;
+}
+
+.certification-icons img, .app-icons img {
+    width: 40px;
+    margin: 5px;
+}
+
+.social-icons a {
+    color: #fff;
+    font-size: 18px;
+    margin-right: 10px;
+    text-decoration: none;
+}
+
+.social-icons a:hover {
+    color: #4caf50;
+}
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 20px;
+    font-size: 14px;
+}
+
+.footer-bottom a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.footer-bottom a:hover {
+    text-decoration: underline;
+}
+
+/*FOOTER DESIGN ENDED*/
+
+
+
+
+/*################ CARLIST PAGE ##################*/
+
+.carcontainerfull {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin: 20px;
+    background-color: #9eb0eb;
+    padding-bottom: 30px; /* Adjust the bottom padding */
+    position: relative; /* Add this for positioning the title */
+}
+
+/* Styling individual cards */
+.card {
+    border: 1linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+    border-radius: 10px;
+    border: 1px solid #f08a5d;
+    width: 280px;
+    margin: 20px;
+    padding: 20px;
+    text-align: center;
+    background-color: rgb(243, 124, 124);
+    box-shadow: 0 4px 8px rgba(238, 121, 121, 0.1);
+    font-family: Arial, sans-serif;
+}
+
+/* Car image styling */
+.car-image {
+    width: 100%;
+    border-radius: 5px;
+    border-color: red;
+    object-fit: cover;
+}
+
+/* Styling for the car name */
+.car-name {
+    font-size: 24px;
+    color: #2f3e46;
+    margin: 10px 0;
+}
+
+/* Styling for the tagline */
+.tagline {
+    color: #666;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+/* Car details section styling */
+.card-body {
+    padding: 10px;
+}
+
+/* Styling for the car details */
+.card-text {
+    font-size: 16px;
+    color: #c9c0c0;
+    margin: 5px 0;
+}
+
+/* Available or unavailable status */
+.text-success {
+    color: green;
+    font-weight: bold;
+}
+
+.text-danger {
+    color: red;
+    font-weight: bold;
+}
+
+/* Book button styling */
+.btn {
+    border-radius: 5px;
+    padding: 10px;
+    font-weight: bold;
+}
+
+.btn-success {
+    background-color: #37c9e2;
+    border: none;
+    color: white;
+}
+
+.btn-success:hover {
+    background-color: #2bb6d6;
+}
+
+.btn-secondary {
+    background-color: #e0e0e0;
+    border: none;
+    color: #666;
+}
+
+.btn-secondary:disabled {
+    background-color: #c4c4c4;
+}
+
+/* Search Form */
+.search-form .form-control {
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.search-form .btn-primary {
+    background-color: #7f8a45;
+    border: none;
+    color: white;
+}
+
+.search-form .btn-primary:hover {
+    background-color: #76cadd;
+}
+
+/* Pagination */
+.pagination {
+    text-align: center;
+    margin-top: 20px;
+    color: black;
+}
+
+.pagination a {
+    text-decoration: none;
+    padding: 5px 10px;
+    color: #37c9e2;
+}
+
+.pagination a:hover {
+    background-color: #f1f1f1;
+    border-radius: 5px;
+}
+
+.pagination .current {
+    font-weight: bold;
+    color: #333;
+}
+
+.step-links a {
+    font-size: 14px;
+}
+
+/* Hover effect for card */
+.card:hover {
+    background-color: #f1f1f1;
+    box-shadow: 0 6px 12px rgba(238, 121, 121, 0.15);
+}
+
+/* Extra small note at the bottom */
+.note {
+    font-size: 12px;
+    color: #888;
+}
+
+/* Title styling for Available Cars */
+.available-cars-title {
+    position: absolute;
+    top: 20px; /* Adjust this value to move vertically */
+    right: 20px; /* Adjust this value to move horizontally */
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    background-color: #fff; /* Optional: Background color */
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* ##### CARLIST PAGE ENDED */
+
+
+
+/* ############# ENQUIRY IS STARTED ###############*/
+/* ENQUIRY FORM */
+.enquiry {
+    font-family: Arial, sans-serif;
+    width: 80%;
+    padding: 0px;
+    background: linear-gradient(to bottom, #261f2b, #d1b1eb);
+    font-size: large;
+    font-weight: 300;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 70px;
+    display: flex;
+
+}
+
+.form-container {
+    background: #e9c4abb6;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(230, 183, 130, 0.76);
+    width: 100%;
+    max-width: 400px;
+    
+    
+}
+h1 {
+    text-align: center;
+}
+label {
+    display: block;
+    margin: 10px 0 5px;
+}
+input, textarea, button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+.submit{
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+.print{
+    background-color: #007BFF;
+    width: 40px;
+}
+
+/* ############# ENQUIRY IS ENDED ###############*/
+
+
+
+/* ############ Styling the About Page section ################## */
+
+
+/* Testimonials Section */
+.about .testimonials {
+    text-align: center;
+    padding: 50px 20px;
+    background: linear-gradient(135deg, #f3f4f6, #e9ebee);
+    border-top: 5px solid #ff5e57;
+    border-bottom: 5px solid #ff5e57;
+}
+
+.testimonials h2 {
+    font-size: 32px;
+    margin-bottom: 30px;
+    font-weight: bold;
+    color: #ff5e57;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.testimonials-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 25px;
+}
+
+.testimonial-card {
+    background: white;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    overflow: hidden;
+    padding: 20px;
+    width: 300px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    border: 1px solid #eaeaea;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.testimonial-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.testimonial-image {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    margin-right: 15px;
+    border: 3px solid #ff5e57;
+}
+
+.testimonial-info h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+}
+
+.testimonial-info .designation {
+    font-size: 14px;
+    color: #555;
+}
+
+.testimonial-info .company {
+    font-size: 13px;
+    color: #777;
+}
+
+.rating {
+    margin: 10px 0;
+    color: #ffd700; /* Gold color for stars */
+    font-size: 20px;
+}
+.testimonial-message {
+    font-size: 15px;
+    color: #444;
+    line-height: 1.6;
+    text-align: justify;
+}
+
+.testimonial-message:before, .testimonial-message:after {
+    content: '"';
+    font-size: 20px;
+    color: #ff5e57;
+}
+
+.testimonial-card:hover .testimonial-message {
+    color: #555;
+    transition: color 0.3s;
+}
+
+/* Add a subtle background hover effect */
+.testimonial-card:hover {
+    background: linear-gradient(145deg, #ffffff, #f6f6f6);
+    border-color: #ff5e57;
+}
+.about-content{
+    padding: 30px;
+    
+    margin-top: 90px;
+}
+.about-title{
+    font-size: 2.5em;
+    margin-bottom: 8px;
+    color:black;   
+}
+.about-description,.about-thank-you{
+    font-size: 1.2em;
+    line-height: 1.6;
+}
+.about-mission, .about-reasons{
+    font-size: 1.8em;
+    margin-top: 20px;
+    
+}
+.about-benefits{
+    padding-left: 40px;
+}
+.about-benefits li {
+    margin: 5px 0;
+}
+
+
+
+/* ############# ABOUT PAGE DESIGN ENDED ################*/
+
+
+/*############### HOW WE WORKS ##################*/
+
+.how-it-works-container {
+    padding: 40px 20px;
+    background: linear-gradient(to right, #46b5e9, #35a89d);
+    font-family: Arial, sans-serif;
+    color: #fff;
+    text-align: center;
+    border-radius: 8px;
+    max-width: 100%;
+    box-sizing: border-box;
+    margin: 10px;
+    padding: 20px;
+    display: inline;
+    
+}
+
+.how-it-works-container .title {
+    font-size: 2em;
+    margin-bottom: 30px;
+    font-weight: bold;
+    color: #fff;
+}
+
+.how-it-works-container .steps {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    gap: 20px; /* Add space between boxes */
+    margin: 0 auto; /* Center the content */
+    width: 100px; /* Limit the width of the content for large screens */
+}
+
+
+.how-it-works-container .step:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+.how-it-works-container .step img {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 10px;
+    border-radius: 50%;
+    border: 2px solid #ddd;
+}
+
+.how-it-works-container .step p {
+    font-size: 1em;
+    font-weight: bold;
+    margin: 10px 0 0;
+}
+
+/* Make the layout responsive */
+@media (max-width: 768px) {
+    .how-it-works-container .steps {
+        flex-direction: column;
+    }
+    
+    .how-it-works-container .step {
+        width: 80%; /* Reduce width for smaller screens */
+    }
+}
+
+
+
+
+/*########HOW WE WORKS IN HOME PAGE END ##########*/
+
+/*  ########## Photo slider ############*/
+/* Carousel Container Styling */
+
+
+/* Carousel Indicators */
+.carousel-indicators button {
+    background-color: #333; /* Dark indicator dots */
+    width: 12px;
+    height: 12px;
+    border-radius: 50%; /* Circular dots */
+    margin: 0 5px; /* Spacing between dots */
+    transition: background-color 0.3s ease;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 25px;
+
+}
+
+.carousel-indicators .active {
+    background-color: #46b5e9; /* Active dot color */
+}
+
+/* Carousel Images */
+.carousel-inner .carousel-item img {
+     /* Maintain aspect ratio while covering the area */
+    height: 500px; /* Set a fixed height for images */
+}
+
+/* Carousel Controls */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    border-radius: 50%; /* Circular shape for icons */
+    padding: 10px;
+}
+
+.carousel-control-prev:hover .carousel-control-prev-icon,
+.carousel-control-next:hover .carousel-control-next-icon {
+    background-color: #46b5e9; /* Highlight on hover */
+}
+
+/* Accessibility */
+.visually-hidden {
+    clip: rect(0 0 0 0); /* Hide the text visually */
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    overflow: hidden;
+    white-space: nowrap;
+}
+/*############# photo slider end ##############*/
+
+
+
+
+
+/* ############# INVOICE PAGE DESIGN STARTED ################*/
+/* Invoice */
+.invoice-container {
+    position: fixed;
+    bottom: 20px; /* Distance from the bottom */
+    left: 20px;   /* Distance from the left */
+    width: 400px; /* Width of the container */
+    max-height: 300px; /* Maximum height to prevent overflow */
+    overflow-y: auto; /* Scroll when content overflows */
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    padding-top: 50px; /* Leave space for the header */
+}
+
+/* Your Invoices title */
+.invoice-container .invoice-title {
+    position: absolute;
+    top: 0; /* Align to the top */
+    left: 15px; /* Add padding from the left */
+    background-color: #ffffff;
+    font-size: 18px;
+    font-weight: bold;
+    color: #2a9d8f;
+    margin: 0;
+    padding: 5px 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 10; /* Ensure it stays above other content */
+}
+
+.invoice-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    margin-top: 10px; /* Add spacing below the title */
+}
+
+.invoice-table th, .invoice-table td {
+    text-align: left;
+    padding: 8px;
+    border: 1px solid #ddd;
+    font-size: 14px;
+}
+
+.invoice-table th {
+    background-color: #2a9d8f;
+    color: white;
+    font-weight: bold;
+}
+
+.invoice-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.invoice-table .view-btn,
+.invoice-table .pay-btn {
+    text-decoration: none;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+}
+
+.invoice-table .view-btn {
+    background-color: #2a9d8f;
+}
+
+.invoice-table .view-btn:hover {
+    background-color: #21867a;
+}
+
+.invoice-table .pay-btn {
+    background-color: #e63946;
+}
+
+.invoice-table .pay-btn:hover {
+    background-color: #d22c38;
+}
+
+
+/* ############# INVOICE PAGE DESIGN ENDED ################*/
+
+
+/* FOR REGISTER */
+.register{
+    background-color: #94c4e9;
+    background: linear-gradient(to bottom, #261f2b, #d1b1eb);
+    padding: 78px;
+    display: flex;
+    justify-content: center;
+
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.form-box {
+    background-color: #4a699c;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    text-align: center;
+    position: relative;
+}
+
+.form-box h2 {
+    color: white;
+    margin-bottom: 20px;
+}
+
+form input {
+    width: 100%;
+    margin: 19px 0;
+    padding: 10px;
+    border-radius: 55px;
+    border: none;
+    
+}
+
+form .terms {
+    display: flex;
+    align-items: center; /* Vertically align the checkbox and text */
+    gap: 8px; /* Add space between checkbox and text */
+    color: white;
+    font-size: 15px;
+    margin-bottom: 15px;
+}
+
+form .terms input[type="checkbox"] {
+    width: 18px; 
+    height: 18px;
+    margin: 0; 
+}
+
+form .terms span {
+    line-height: 1.5; /* Ensure proper text alignment with checkbox */
+}
+
+form button {
+    width: 100%;
+    padding: 15px;
+    background-color: white;
+    color: #3b82f6;
+    border: 10px;
+    
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+form button:hover {
+    background-color: #55c6e2;
+}
+/* ############ REGISTER PAGE ENDED ##########*/
+
+
+
+/*############ LOGIN PAGE STARTED ##########*/
+
+
+.login-container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 30px;
+    background: linear-gradient(to bottom, #261f2b, #d1b1eb);
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+/* Header for the form */
+.login-container h2 {
+    margin-bottom: 20px;
+    color: #ffffff;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Input fields styling */
+.input-field {
+    margin: 15px 0;
+    position: relative;
+}
+
+.input-field input {
+    width: 100%;
+    padding: 12px 15px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    outline: none;
+    transition: border 0.3s;
+}
+
+.input-field input:focus {
+    border-color: #f08a5d;
+}
+
+/* Login button styling */
+.login-btn {
+    background-color: #85503a;
+    color: #fff;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s;
+}
+
+.login-btn:hover {
+    background-color: #d66b4d;
+}
+
+/* Messages styling */
+ul {
+    list-style: none;
+    padding: 0;
+    color: #333;
+}
+
+ul li {
+    /* background-color: #ffe6e6; */
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    font-size: 24px;
+    color: #292424;
+    text-align: left;
+}
+
+/* Register link */
+.register-link {
+    margin-top: 15px;
+    font-size: 14px;
+    color: #ffffff;
+}
+
+.register-link a {
+    color: #251711;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.register-link a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+    .login-container {
+        padding: 20px;
+    }
+
+    .login-container h2 {
+        font-size: 20px;
+    }
+
+    .login-btn {
+        font-size: 14px;
+    }
+}
+/*######### LOGINN PAGE DESIGN ENDED #########*/
+/* Carousel Styles */
+.carousel-vertical {
+    height: 100vh; /* Full height for vertical carousel */
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+}
+
+.carousel-inner {
+    flex: 1; /* Allow the inner carousel to take available space */
+}
+
+.carousel-item {
+    height: 100%; /* Full height for each item */
+    display: flex;
+    justify-content: center; /* Center the image */
+    align-items: center; /* Center the image */
+}
+
+.carousel-item img {
+    max-height: 100%; /* Ensure the image fits within the carousel */
+    object-fit: cover; /* Cover the area without distortion */
+}
+
+

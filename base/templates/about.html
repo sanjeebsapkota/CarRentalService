@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block title %}About Us{% endblock %}
+
+{% block content %}
+<div class="about">
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <h2>What our clients say</h2>
+        <div class="testimonials-container">
+            {% for testimonial in testimonials %}
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <img src="{{ testimonial.image.url }}" alt="{{ testimonial.name }}" class="testimonial-image">
+                        <div class="testimonial-info">
+                            <h3>{{ testimonial.name }}</h3>
+                            <p class="designation">{{ testimonial.designation }}</p>
+                            <p class="company">{{ testimonial.company }}</p>
+                        </div>
+                    </div>
+                    <p class="testimonial-message">{{ testimonial.message }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <!-- About Content Section -->
+    <section class="about-content">
+        <h1 class="about-title">About Our Car Rental Service</h1>
+        <p class="about-description">
+            Welcome to our car rental service! We are dedicated to providing high-quality, reliable vehicles for all your travel needs.
+            Whether you're exploring the city or embarking on a road trip, we have a wide range of cars to suit your needs.
+        </p>
+
+        <h2 class="about-mission">Our Mission</h2>
+        <p class="about-description">
+            Our mission is to make car rentals accessible, affordable, and convenient for everyone. We pride ourselves on excellent customer
+            service and maintaining a well-kept fleet of vehicles.
+        </p>
+
+        <h2 class="about-reasons">Why Choose Us?</h2>
+        <ul class="about-benefits">
+            <li>Reliable and affordable vehicles</li>
+            <li>Convenient booking and rental process</li>
+            <li>Customer support available 24/7</li>
+            <li>Special discounts for long-term rentals</li>
+        </ul>
+
+        <p class="about-thank-you">
+            <i class="fas fa-smile" style="font-size:48px;color:blue"></i> Thank you for choosing our car rental service. We look forward to serving you!
+        </p>
+    </section>
+</div>
+{% endblock %}

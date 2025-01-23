@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}Register{% endblock %}
+
+{% block content %}
+<div class="register">
+    <div class="container">
+        <div class="form-box">
+            <h2>Signup</h2>
+            {% if messages %}
+                <ul>
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+            <form method="POST">
+                {% csrf_token %}
+                <input type="text" id="username" name="username" placeholder="Username" required>
+                <input type="email" id="email" name="email" placeholder="Email address" required>
+                <input type="password" id="password1" name="password1" placeholder="Password" required>
+                <input type="password" id="password2" name="password2" placeholder="Confirm Password" required>
+                <label class="terms">
+                    <input type="checkbox" id="terms" name="terms" required>
+                    <span>I accept all terms & conditions </span>
+                </label>
+                <button type="submit">Signup</button>
+            </form>
+            <p class="login-link">Already have an account? <a href="{% url 'login' %}">Login here</a>.</p>
+        </div>    
+    </div>
+</div>
+{% endblock %}

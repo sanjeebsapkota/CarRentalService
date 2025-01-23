@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}Online Car Rental Service{% endblock %}
+
+{% block content %}
+    <!-- Carousel -->
+    <section id="carouselExampleIndicators" class="carousel slide">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="{{ MEDIA_URL }}images/img1.png" class="d-block w-100" alt="Slide 1" onerror="this.onerror=null; this.src='{% static 'images/default-image.jpg' %}';">
+            </div>
+            <div class="carousel-item">
+                <img src="{{ MEDIA_URL }}images/img2.png" class="d-block w-100" alt="Slide 2" onerror="this.onerror=null; this.src='{% static 'images/default-image.jpg' %}';">
+            </div>
+            <div class="carousel-item">
+                <img src="{{ MEDIA_URL }}images/img3.png" class="d-block w-100" alt="Slide 3" onerror="this.onerror=null; this.src='{% static 'images/default-image.jpg' %}';">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </section> 
+
+    <!-- How It Works Section -->
+    <section class="how-it-works-container">
+        <h2 class="title">How We Work</h2>
+        <div class="steps">
+            <div class="step">
+                <img src="{{ MEDIA_URL }}images/Self Drive App.jpg" alt="Download App" onerror="this.onerror=null; this.src='{% static 'images/default-image.jpg' %}';">
+                <p>Download App</p>
+            </div>
+            <div class="step">
+                <img src="{{ MEDIA_URL }}images/pickup.jpg" alt="Pick up Point" onerror="this.onerror=null; this.src='{% static 'images/default-image.jpg' %}';">
+                <p>Pick up Point</p>
+            </div>
+            <div class="step">
+                <img src="{{ MEDIA_URL }}images/drive.jpg" alt="Drive Anywhere" onerror="this.onerror=null; this.src='{% static 'images/default-image.jpg' %}';">
+                <p>Drive Anywhere</p>
+            </div>
+            <div class="step">
+                <img src="{{ MEDIA_URL }}images/return.jpg" alt="Return" onerror="this.onerror=null; this.src='{% static 'images/default-image.jpg' %}';">
+                <p>Return</p>
+            </div>
+        </div>
+    </section>
+{% endblock %}

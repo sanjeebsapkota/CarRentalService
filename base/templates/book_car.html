@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Car</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <!-- Leaflet.js CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <!-- Custom CSS for Suggestions -->
+    <style>
+        .suggestions {
+            position: absolute;
+            background: white;
+            border: 1px solid #ccc;
+            z-index: 1000;
+            max-height: 200px;
+            overflow-y: auto;
+            width: 100%;
+        }
+        .suggestion-item {
+            padding: 8px;
+            cursor: pointer;
+        }
+        .suggestion-item:hover {
+            background: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">Book {{ car.make }} {{ car.model }}</h1>
+
+        <p><strong>Year:</strong> {{ car.year }}</p>
+        <p><strong>Price per day:</strong> NPR {{ car.rental_price_per_day }}</p>
+
+        {% if car.image %}
+        <div class="mb-3">
+            <img src="{{ car.image.url }}" alt="{{ car.make }} {{ car.model }}" class="img-fluid">
+        </div>
+        {% endif %}
+
+        {% if error %}
+        <div class="alert alert-danger" role="alert">
+            {{ error }}
+        </div>
+        {% endif %}
+
+        <form method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="start_date">Rental Start Date:</label>
+                <input type="date" class="form-control" id="start_date" name="start_date" required>
+            </div>
+            <div class="form-group">
+                <label for="end_date">Rental End Date:</label>
+                <input type="date" class="form-control" id="end_date" name="end_date" required>
+            </div>
+            <div class="form-group position-relative">
+                <label for="location">Pickup Location:</label>
+                <input type="text" class="form-control" id="location" name="location" placeholder="Enter location" autocomplete="off" required>
+                <!-- Suggestions Container -->
+                <div id="suggestions" class="suggestions d-none"></div>
+            </div>
+            <div id="map" style="height: 400px; margin-top: 10px;"></div>
+            <button type="submit" class="btn btn-primary">Confirm Booking</button>
+        </form>
+
+        <br>
+        <a href="{% url 'car_list' %}" class="btn btn-secondary">Back to Car List</a>
+    </div>
+
+    <!-- Leaflet.js JavaScript -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <script>
+        // Initialize the map
+        const map = L.map('map').setView([27.7172, 85.3240], 13); // Centered on Kathmandu
+        let marker;
+
+        // Load and display the OpenStreetMap tiles
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
+
+        // Handle location suggestions
+        const locationInput = document.getElementById('location');
+        const suggestionsContainer = document.getElementById('suggestions');
+
+        locationInput.addEventListener('input', function () {
+            const query = locationInput.value.trim();
+
+            // If the input is empty, hide suggestions
+            if (!query) {
+                suggestionsContainer.classList.add('d-none');
+                return;
+            }
+
+            // Fetch suggestions from OpenStreetMap's Nominatim API
+            fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(query)}`)
+                .then(response => response.json())
+                .then(data => {
+                    // Clear previous suggestions
+                    suggestionsContainer.innerHTML = '';
+
+                    // Add new suggestions
+                    data.forEach(place => {
+                        const item = document.createElement('div');
+                        item.className = 'suggestion-item';
+                        item.textContent = place.display_name;
+
+                        // On click, set the location and center map
+                        item.addEventListener('click', () => {
+                            locationInput.value = place.display_name;
+                            suggestionsContainer.classList.add('d-none');
+
+                            if (place.lat && place.lon) {
+                                map.setView([place.lat, place.lon], 15);
+                                // Add marker to the map
+                                if (marker) map.removeLayer(marker);
+                                marker = L.marker([place.lat, place.lon]).addTo(map);
+                            }
+                        });
+
+                        suggestionsContainer.appendChild(item);
+                    });
+
+                    // Show the suggestions
+                    suggestionsContainer.classList.remove('d-none');
+                })
+                .catch(console.error);
+        });
+
+        // Hide suggestions when clicking outside
+        document.addEventListener('click', function (e) {
+            if (!suggestionsContainer.contains(e.target) && e.target !== locationInput) {
+                suggestionsContainer.classList.add('d-none');
+            }
+        });
+
+        // Handle map click to select location
+        map.on('click', function (e) {
+            const { lat, lng } = e.latlng;
+
+            // Fetch address using reverse geocoding
+            fetch(`https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lng}`)
+                .then(response => response.json())
+                .then(data => {
+                    const address = data.display_name || `${lat}, ${lng}`;
+                    locationInput.value = address;
+
+                    // Add marker to the map
+                    if (marker) map.removeLayer(marker);
+                    marker = L.marker([lat, lng]).addTo(map);
+                })
+                .catch(console.error);
+        });
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

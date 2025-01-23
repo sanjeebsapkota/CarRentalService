@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+
+{% block title %}Your Invoices{% endblock %}
+
+{% block content %}
+<h1 class="page-title">Your Invoices</h1>
+
+{% if invoices %}
+    <table class="invoice-table">
+        <thead>
+            <tr>
+                <th>Invoice Number</th>
+                <th>Car</th>
+                <th>Rental Period</th>
+                <th>Total Price</th>
+                <th>Issue Date</th>
+                <th>Details</th>
+                <th>Payment</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for invoice in invoices %}
+                <tr>
+                    <td>INV-{{ invoice.booking.id|default:"N/A"|stringformat:"06" }}</td>
+                    <td>{{ invoice.booking.car }}</td>
+                    <td>{{ invoice.booking.start_date }} to {{ invoice.booking.end_date }}</td>
+                    <td>{{ invoice.total_price }}</td>
+                    <td>{{ invoice.created_at }}</td>
+                    
+                    <!-- View Button -->
+                    <td>
+                        <a href="{% url 'invoice' invoice.booking.id %}" class="view-btn">View</a>
+                    </td>
+                    
+                    <!-- Khalti Payment Button -->
+                    <td>
+                        <button class="pay-btn" 
+                            onclick="payWithKhalti('{{ invoice.total_price }}', 
+                            'Rental Invoice - INV-{{ invoice.booking.id|default:"N/A"|stringformat:"06" }}', 
+                            '{{ invoice.booking.id }}')">
+                            Pay with Khalti
+                        </button>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p>No invoices found.</p>
+{% endif %}
+{% endblock %}
+
+{% block scripts %}
+<script src="https://khalti.com/static/khalti-checkout.js"></script>
+<script>
+    var checkout = new KhaltiCheckout({
+        "publicKey": "<8e345dc558414cdfa3619a9cfbf6d2c5>",  // Replace with your Khalti Public Key
+        "productIdentity": "",
+        "productName": "",
+        "productUrl": "http://127.0.0.1:8000/",  // Update with your product's actual URL
+        "eventHandler": {
+            onSuccess: function (payload) {
+                // Call your backend to verify payment
+                fetch('/khalti/verify/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': '{{ csrf_token }}',
+                    },
+                    body: JSON.stringify({
+                        token: payload.token,
+                        amount: payload.amount
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert(data.message);
+                        location.reload();  // Reload page to reflect payment status
+                    } else {
+                        alert('Payment verification failed.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error verifying payment:', error);
+                    alert('Payment verification failed. Please try again.');
+                });
+            },
+            onError: function (error) {
+                console.error('Payment error:', error);
+                alert('An error occurred during the payment process. Please try again.');
+            },
+            onClose: function () {
+                console.log('Checkout widget is closed');
+            }
+        }
+    });
+
+    function payWithKhalti(amount, productName, productIdentity) {
+        checkout.show({
+            amount: amount * 100,  // Khalti requires amount in paisa (1 Rs = 100 paisa)
+            productName: productName,
+            productIdentity: productIdentity
+        });
+    }
+</script>
+{% endblock %}
